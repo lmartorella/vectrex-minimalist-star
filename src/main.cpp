@@ -22,7 +22,7 @@ int main() {
 
         Reset0Ref(); // zero beam
 
-        bios::SetScale(bios::DefaultScale);
+        bios::SetScale(127);
         Moveto_d(-25, -50);
 
         lines.lines[0].deltaX = lines.lines[2].deltaX = 75;
