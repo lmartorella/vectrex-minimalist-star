@@ -12,13 +12,16 @@ struct VectorList {
 };
 
 int main() {
-    bios::Init();
     VectorList lines;
     lines.count = 7;
+    Intensity_a(127);
 
     while (true) {
-        bios::WaitFrame();
-        bios::ZeroBeam();
+        Wait_Recal();
+        Intensity_a(127);
+
+        Reset0Ref(); // zero beam
+
         bios::SetScale(bios::DefaultScale);
         Moveto_d(-25, -50);
         {
