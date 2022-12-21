@@ -40,20 +40,20 @@
 	;;;
    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	.area	.text
-	.ascii "g GCE GAME_YEAR"		; cartrige id and year
+	.ascii "g GCE 2022"		; cartrige id and year
 	.byte 0x80						; string end
-	.word GAME_MUSIC				; address to music1 in BIOS
+	.word 0xfd0d					; address to music1 in BIOS
 
 	.byte 0xf8, 0x50, 0x40, -0x80	; height, width, rel y, rel x
-	.ascii "GAME_TITLE_1"			; game title
+	.ascii "         PONG"			; game title
 	.byte 0x80						; string end
 
 	.byte 0xf8, 0x50, 0x20, -0x80	; height, width, rel y, rel x
-	.ascii "GAME_TITLE_2"			; game title
+	.ascii "          BY"			; game title
 	.byte 0x80			; string end
 
 	.byte 0xf8, 0x50, 0x00, -0x80	; height, width, rel y, rel x
-	.ascii "GAME_TITLE_3"			; game title
+	.ascii "   ANTONIO MAIORANO"			; game title
 	.byte 0x80						; string end
 
 	.byte 0							; header end

@@ -1,11 +1,5 @@
-# Game info output to bin header.
-GAME_TITLE_1 = '         PONG'
-GAME_TITLE_2 = '          BY'
-GAME_TITLE_3 = '   ANTONIO MAIORANO'
-GAME_YEAR = $(shell date +'%Y')
-GAME_MUSIC = 0xfd0d
-BIN = vectrex-pong.bin
-VEC = vectrex-pong.vec
+BIN = vectrex-star.bin
+VEC = vectrex-star.vec
 
 CPP=/usr/local/bin/m6809-unknown-none-g++
 CC1PLUS=/usr/local/libexec/gcc/m6809-unknown-none/4.3.[46]/cc1plus
@@ -110,12 +104,7 @@ print_stats: $(MAP) crt0.asm
 
 # Produce crt0.asm from crt0.tpl (template) by replacing placeholders with target base name
 crt0.asm: make/crt0.tpl
-	cat make/crt0.tpl \
-		| sed -e s/GAME_TITLE_1/$(GAME_TITLE_1)/ \
-		| sed -e s/GAME_TITLE_2/$(GAME_TITLE_2)/ \
-		| sed -e s/GAME_TITLE_3/$(GAME_TITLE_3)/ \
-		| sed -e s/GAME_YEAR/$(GAME_YEAR)/ \
-		| sed -e s/GAME_MUSIC/$(GAME_MUSIC)/ > crt0.asm
+	cat make/crt0.tpl > crt0.asm
 
 %.o: src/%.cpp
 	# Compile .cpp to asm file (.s)
