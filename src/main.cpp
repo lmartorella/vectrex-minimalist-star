@@ -24,54 +24,20 @@ int main() {
 
         bios::SetScale(bios::DefaultScale);
         Moveto_d(-25, -50);
-        {
-            int8_t deltaX1 = 75;   // 50
-            int8_t deltaY1 = 75;   // 50
-            int8_t deltaX2 = -100; // -50
-            int8_t deltaY2 = 0;    // 50
-            {
-                lines.lines[0].deltaX = deltaX1;
-                lines.lines[0].deltaY = deltaY1;
-                lines.lines[1].deltaX = deltaX2;
-                lines.lines[1].deltaY = deltaY2;
-            }
-        }
-        {
-            int8_t deltaX1 = 75;  // 50
-            int8_t deltaY1 = -75; // -50
-            int8_t deltaX2 = 0;   // 50
-            int8_t deltaY2 = 100; // 50
-            {
-                lines.lines[2].deltaX = deltaX1;
-                lines.lines[2].deltaY = deltaY1;
-                lines.lines[3].deltaX = deltaX2;
-                lines.lines[3].deltaY = deltaY2;
-            }
-        }
-        {
-            int8_t deltaX1 = -75; // -50
-            int8_t deltaY1 = -75; // -25
-            int8_t deltaX2 = 100; // 50
-            int8_t deltaY2 = 0;   // -25
-            {
-                lines.lines[4].deltaX = deltaX1;
-                lines.lines[4].deltaY = deltaY1;
-                lines.lines[5].deltaX = deltaX2;
-                lines.lines[5].deltaY = deltaY2;
-            }
-        }
-        {
-            int8_t deltaX1 = -75;  // -25
-            int8_t deltaY1 = 75;   // 50
-            int8_t deltaX2 = 0;    // -25
-            int8_t deltaY2 = -100; // -50
-            {
-                lines.lines[6].deltaX = deltaX1;
-                lines.lines[6].deltaY = deltaY1;
-                lines.lines[7].deltaX = deltaX2;
-                lines.lines[7].deltaY = deltaY2;
-            }
-        }
+
+        lines.lines[0].deltaX = lines.lines[2].deltaX = 75;
+        lines.lines[4].deltaX = lines.lines[6].deltaX = -75;
+
+        lines.lines[0].deltaY = lines.lines[6].deltaY = 75;
+        lines.lines[2].deltaY = lines.lines[4].deltaY = -75;
+
+        lines.lines[1].deltaX = -100;
+        lines.lines[5].deltaX = 100;
+        lines.lines[3].deltaX = lines.lines[7].deltaX = 0;
+
+        lines.lines[1].deltaY = lines.lines[5].deltaY = 0;
+        lines.lines[3].deltaY = 100;
+        lines.lines[7].deltaY = -100;
 
         Draw_VLc(&lines);
     }
