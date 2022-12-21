@@ -5,7 +5,10 @@ struct VectorList {
     // Number of (y,x) vertices - 1
     int8_t count;
     // Array of (y,x) offsets to move beam
-    int8_t vertices[16];
+    struct {
+        int8_t deltaY;
+        int8_t deltaX;
+    } lines[8];
 };
 
 int main() {
@@ -24,10 +27,10 @@ int main() {
             int8_t deltaX2 = -100; // -50
             int8_t deltaY2 = 0;    // 50
             {
-                lines.vertices[0] = deltaY1;
-                lines.vertices[1] = deltaX1;
-                lines.vertices[2] = deltaY2;
-                lines.vertices[3] = deltaX2;
+                lines.lines[0].deltaX = deltaX1;
+                lines.lines[0].deltaY = deltaY1;
+                lines.lines[1].deltaX = deltaX2;
+                lines.lines[1].deltaY = deltaY2;
             }
         }
         {
@@ -36,10 +39,10 @@ int main() {
             int8_t deltaX2 = 0;   // 50
             int8_t deltaY2 = 100; // 50
             {
-                lines.vertices[4] = deltaY1;
-                lines.vertices[5] = deltaX1;
-                lines.vertices[6] = deltaY2;
-                lines.vertices[7] = deltaX2;
+                lines.lines[2].deltaX = deltaX1;
+                lines.lines[2].deltaY = deltaY1;
+                lines.lines[3].deltaX = deltaX2;
+                lines.lines[3].deltaY = deltaY2;
             }
         }
         {
@@ -48,10 +51,10 @@ int main() {
             int8_t deltaX2 = 100; // 50
             int8_t deltaY2 = 0;   // -25
             {
-                lines.vertices[8] = deltaY1;
-                lines.vertices[9] = deltaX1;
-                lines.vertices[10] = deltaY2;
-                lines.vertices[11] = deltaX2;
+                lines.lines[4].deltaX = deltaX1;
+                lines.lines[4].deltaY = deltaY1;
+                lines.lines[5].deltaX = deltaX2;
+                lines.lines[5].deltaY = deltaY2;
             }
         }
         {
@@ -60,10 +63,10 @@ int main() {
             int8_t deltaX2 = 0;    // -25
             int8_t deltaY2 = -100; // -50
             {
-                lines.vertices[12] = deltaY1;
-                lines.vertices[13] = deltaX1;
-                lines.vertices[14] = deltaY2;
-                lines.vertices[15] = deltaX2;
+                lines.lines[6].deltaX = deltaX1;
+                lines.lines[6].deltaY = deltaY1;
+                lines.lines[7].deltaX = deltaX2;
+                lines.lines[7].deltaY = deltaY2;
             }
         }
 
