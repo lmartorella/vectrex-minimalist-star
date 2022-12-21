@@ -45,15 +45,15 @@
 	.word 0xfd0d					; address to music1 in BIOS
 
 	.byte 0xf8, 0x50, 0x40, -0x80	; height, width, rel y, rel x
-	.ascii "         PONG"			; game title
+	.ascii "   MINIMALIST"			; game title
 	.byte 0x80						; string end
 
 	.byte 0xf8, 0x50, 0x20, -0x80	; height, width, rel y, rel x
-	.ascii "          BY"			; game title
+	.ascii "        STAR"			; game title
 	.byte 0x80			; string end
 
 	.byte 0xf8, 0x50, 0x00, -0x80	; height, width, rel y, rel x
-	.ascii "   ANTONIO MAIORANO"			; game title
+	.ascii "   LUCIANO M       "			; game title
 	.byte 0x80						; string end
 
 	.byte 0							; header end
