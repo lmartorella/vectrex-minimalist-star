@@ -12,7 +12,7 @@ struct VectorList {
 };
 
 int main() {
-    VectorList lines;
+    struct VectorList lines;
     lines.count = 7;
     Intensity_a(127);
 
@@ -22,7 +22,7 @@ int main() {
 
         Reset0Ref(); // zero beam
 
-        bios::SetScale(127);
+        SetScale(127);
         Moveto_d(-25, -50);
 
         lines.lines[0].deltaX = lines.lines[2].deltaX = 75;

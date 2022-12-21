@@ -1,7 +1,7 @@
 BIN = vectrex-star.bin
 VEC = vectrex-star.vec
 
-CPP=/usr/local/bin/m6809-unknown-none-g++
+GCC=/usr/local/bin/m6809-unknown-none-gcc
 CC1PLUS=/usr/local/libexec/gcc/m6809-unknown-none/4.3.[46]/cc1plus
 # CC1=/usr/local/libexec/gcc/m6809-unknown-none/4.3.[46]/cc1
 
@@ -22,7 +22,6 @@ CFLAGS += -mint8
 CFLAGS += -fno-gcse
 CFLAGS += -fno-toplevel-reorder
 # Don't emit thread-safe guards around local static variables
-CFLAGS += -fno-threadsafe-statics
 CFLAGS += -msoft-reg-count=0
 CFLAGS += -fverbose-asm -fno-time-report -fdiagnostics-show-option
 CFLAGS += -W -Wall -Wextra -Wconversion -Werror -Wno-comment -Wno-unused-parameter -Wno-return-type
@@ -45,10 +44,10 @@ LFLAGS= -m -w -u -s -b .text=0x0
 #  -s   Motorola S Record as (out)file[.s--]
 #  -b   area base address=expression
 
-SRCS = $(wildcard src/*.cpp)
-_OBJS = $(SRCS:.cpp=.o)
+SRCS = $(wildcard src/*.c)
+_OBJS = $(SRCS:.c=.o)
 OBJS = $(patsubst src/%, %, $(_OBJS))
-_RSTS = $(SRCS:.cpp=.rst)
+_RSTS = $(SRCS:.c=.rst)
 RSTS = $(patsubst src/%, %, $(_RSTS))
 DEPS = $(OBJS:.o=.d)
 MAP = $(BIN:.bin=.map)
@@ -65,8 +64,8 @@ print_stats: $(MAP) crt0.asm
 	@python3 ./tools/build/print_stats.py $(MAP) crt0.asm
 
 # Rule to generate a dep file by using the C preprocessor
-%.d: src/%.cpp
-	@$(CPP) $(CFLAGS) $< -MM -MT $(@:.d=.o) > $@
+%.d: src/%.c
+	@$(GCC) $(CFLAGS) $< -MM -MT $(@:.d=.o) > $@
 
 # Include generated dep files for header deps per source file
 -include $(DEPS)
@@ -106,8 +105,8 @@ print_stats: $(MAP) crt0.asm
 crt0.asm: make/crt0.tpl
 	cat make/crt0.tpl > crt0.asm
 
-%.o: src/%.cpp
-	# Compile .cpp to asm file (.s)
+%.o: src/%.c
+	# Compile .c to asm file (.s)
 	$(CC1PLUS) $< -dumpbase $* $(CC1FLAGS) -auxbase $* -o $*.s
 	# Assemble .s to .rel, .lst, .hlr, .sym
 	$(AS) $(AFLAGS) $*.s
