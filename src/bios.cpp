@@ -1,27 +1,6 @@
 #include "bios.h"
 #include "vectrex.h"
 
-namespace PsgReg {
-    enum Type {
-        ToneALow = 0,
-        ToneAHigh = 1,
-        ToneBLow = 2,
-        ToneBHigh = 3,
-        ToneCLow = 4,
-        ToneCHigh = 5,
-        Noise = 6,
-        MixerControl = 7,
-        AmplitudeA = 8,
-        AmplitudeB = 9,
-        AmplitudeC = 10,
-        EnvelopePeriodLow = 11,
-        EnvelopePeriodHigh = 12,
-        EnvelopeShape = 13,
-        IOPortADataStore = 14,
-        IOPortBDataStore = 15
-    };
-}
-
 namespace bios {
     void Init() {
         SetBeamIntensity(DefaultIntensity);
